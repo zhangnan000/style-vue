@@ -162,3 +162,22 @@ const f1 = new Foo()
 // @ts-ignore
 f1.log()
 f1.setBar('barrrrr')
+// @ts-ignore
+@addAge
+class Person {
+  name: string;
+  constructor(message: string) {
+      this.name = message;
+  }
+  say() {
+    // @ts-ignore
+    console.log(`My name is:${this.name}, My age is:${this.age}`)
+  }
+}
+function addAge(constructor:any) {
+  return class extends constructor {
+    age = 16
+  }
+}
+// @ts-ignore
+(new Person('fangfang')).say()
