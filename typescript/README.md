@@ -1,4 +1,4 @@
-# store-vue
+# study-vue
 
 ## Project setup
 ```
