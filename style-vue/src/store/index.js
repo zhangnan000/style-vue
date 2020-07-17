@@ -2,14 +2,32 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
+// 工厂函数
+export function createStore() {
+  return new Vue.Store({
+    state: {
+      count: 108
+    },
+    mutations: {
+      add(state) {
+        state.count += 1;
+      },
+      // 加一个初始化
+      init(state, count) {
+        state.count = count;
+      },
+    },
+    actions: {
+      // 加一个异步请求count的action
+      getCount({ commit }) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            commit("init", Math.random() * 100);
+            resolve();
+          }, 1000);
+        });
+      },
+    },
+  })
+}
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
